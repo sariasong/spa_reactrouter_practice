@@ -7,4 +7,4 @@
   )
 end
 
-pust 'seeded'
+puts 'seeded'
