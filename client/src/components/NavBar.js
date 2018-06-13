@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
+import { isAuthenticated } from '../fakeAuth'
 
 const styles = {
   active: {
@@ -14,6 +15,21 @@ const NavBar = () => (
     <NavLink exact activeStyle={styles.active} to="/">Home</NavLink>
     {' '}
     <NavLink exact activeStyle={styles.active} to="/about">About</NavLink>
+    { isAuthenticated() ?
+      <Fragment>
+        {' '}
+        <NavLink activeStyle={styles.active} to="dashboard">
+          Dashboard
+        </NavLink>
+      </Fragment>
+      :
+      <Fragment>
+        {' '}
+        <NavLink activeStyle={styles.active} to="/login">
+          Login
+        </NavLink>
+      </Fragment>
+    }
   </nav>
 )
 
